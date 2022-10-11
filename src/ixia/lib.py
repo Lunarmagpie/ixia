@@ -5,7 +5,7 @@ from bisect import bisect
 from itertools import accumulate
 from math import acos, ceil, cos, e, exp, factorial, floor, isfinite, log, pi, sin, sqrt
 from os import urandom
-from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union, overload
+from typing import Any, Iterable, MutableSequence, Sequence, TypeVar, Union
 
 T = TypeVar("T")
 Number = Union[int, float]
@@ -38,7 +38,7 @@ def choices(
     k: int = 1,
 ) -> list[T]:
     """
-    Return a k sized list of sequence elements chosen with replacement.
+    Returns a k sized list of sequence elements chosen with replacement.
 
     If the relative weights or cumulative weights are not specified,
     the selections are made with equal probability.
@@ -150,15 +150,6 @@ def gauss(mu: Number, sigma: Number) -> float:
     return mu + z * sigma
 
 
-def get_rand_bits(k: int) -> int:
-    """Generates an int with k random bits."""
-    if k < 0:
-        raise ValueError("number of bits must be non-negative")
-    numbytes = (k + 7) // 8
-    x = int.from_bytes(urandom(numbytes), "big")
-    return x >> (numbytes * 8 - k)
-
-
 def log_norm_variate(mu: Number, sigma: Number) -> float:
     """
     Log normal distribution.
@@ -193,6 +184,15 @@ def pareto_variate(alpha: Number) -> float:
     alpha is the shape parameter.
     """
     return (1.0 - random()) ** (-1.0 / alpha)
+
+
+def rand_bits(k: int) -> int:
+    """Generates an int with k random bits."""
+    if k < 0:
+        raise ValueError("number of bits must be non-negative")
+    numbytes = (k + 7) // 8
+    x = int.from_bytes(urandom(numbytes), "big")
+    return x >> (numbytes * 8 - k)
 
 
 def rand_bytes(n: int) -> bytes:
@@ -307,22 +307,12 @@ def shuffle(seq: MutableSequence[Any]) -> None:
 
     Use shuffled() for out of place shuffling.
     """
-    for i in reversed(range(1, len(seq))):
+    for i in range(len(seq) - 1, 0, -1):
         j = s.randbelow(i + 1)
         seq[i], seq[j] = seq[j], seq[i]
 
 
-@overload
-def shuffled(seq: MutableSequence[T]) -> MutableSequence[T]:
-    ...
-
-
-@overload
-def shuffled(seq: Sequence[T]) -> list[T]:
-    ...
-
-
-def shuffled(seq: Sequence[T] | MutableSequence[T]) -> list[T] | MutableSequence[T]:
+def shuffled(seq: Sequence[T]) -> MutableSequence[T]:
     """
     Returns a shuffled copy of the sequence.
     Returns a list for immutable sequences.
