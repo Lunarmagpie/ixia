@@ -4,6 +4,7 @@ version = "1.0.0"
 description = "A library connecting secrets' security with random's usability"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
