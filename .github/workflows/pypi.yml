@@ -14,16 +14,17 @@ jobs:
       matrix:
         python-version: ["3.10"]
         os: [ubuntu-latest, macos-latest, windows-latest]
-        vers: [i686, aarch64, auto64]
+        # vers: [i686, aarch64, auto64]
+        vers: [auto64]
         include:
-          - vers: i686
+          # - vers: i686
+          #   os: ubuntu-latest
+          # - vers: aarch64
+          #   os: ubuntu-latest
+          # - vers: auto64
             os: ubuntu-latest
-          - vers: aarch64
-            os: ubuntu-latest
-          - vers: auto64
-            os: ubuntu-latest
-          - vers: arm64
-            os: macos-latest
+          # - vers: arm64
+          #   os: macos-latest
           - vers: auto64
             os: macos-latest
           - vers: auto64
