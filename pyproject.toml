@@ -9,7 +9,7 @@ readme = "README.md"
 [project]
 version = "1.0.3"
 name = "ixia"
-requires-python = "^3.8"
+requires-python = ">=3.8"
 
 [tool.poetry.dependencies]
 python = "^3.8"
