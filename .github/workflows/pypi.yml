@@ -52,21 +52,18 @@ jobs:
         uses: joerick/cibuildwheel@v1.12.0
         env:
           CIBW_ARCHS_LINUX: ${{ matrix.vers }}
-          CIBW_BUILD_FRONTEND: "maturin"
 
       - name: wheels Macos ${{ matrix.vers }}
         if: runner.os == 'Macos'
         uses: joerick/cibuildwheel@v2.2.2
         env:
           CIBW_ARCHS_MACOS: ${{ matrix.vers }}
-          CIBW_BUILD_FRONTEND: "maturin"
 
       - name: wheels Windows ${{ matrix.vers }}
         if: runner.os == 'Windows'
         uses: joerick/cibuildwheel@v2.2.2
         env:
           CIBW_ARCHS_WINDOWS: ${{ matrix.vers }}
-          CIBW_BUILD_FRONTEND: "maturin"
 
       - uses: actions/upload-artifact@v2
         with:
