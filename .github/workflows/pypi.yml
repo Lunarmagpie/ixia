@@ -3,7 +3,7 @@
 name: Release to to PyPi and GitHub
 
 on:
-  release:
+  push:
 
 jobs:
   build_wheels:
