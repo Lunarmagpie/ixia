@@ -49,12 +49,12 @@ jobs:
         with:
           profile: minimal
           toolchain: stable
-          manylinux: ${{ matrix.vers }}
           override: true
       - uses: messense/maturin-action@v1
         with:
           maturin-version: latest
           command: build
+          manylinux: ${{ matrix.vers }}
           args: --release -o dist
 
       - uses: actions/upload-artifact@v2
