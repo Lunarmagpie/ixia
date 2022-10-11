@@ -1,16 +1,15 @@
 use core::f64::consts::E;
 
-use getrandom;
+use getrandom::getrandom;
+use pyo3::create_exception;
 use pyo3::exceptions::PyException;
 use pyo3::prelude::*;
-use pyo3::create_exception;
-
 
 create_exception!(bindings, OsRandomError, PyException);
 
 #[inline]
-fn random_bytes(bytes: &mut [u8]) -> PyResult<()>{
-    match getrandom::getrandom(bytes) {
+fn random_bytes(bytes: &mut [u8]) -> PyResult<()> {
+    match getrandom(bytes) {
         Ok(_) => Ok(()),
         Err(e) => Err(OsRandomError::new_err(e.to_string())),
     }
@@ -28,7 +27,7 @@ fn random() -> PyResult<f64> {
 fn normal_variate(mu: f64, sigma: f64) -> PyResult<f64> {
     let nv = 4. * E.powf(-0.5) / f64::sqrt(2.0);
     loop {
-        let u1= random()?;
+        let u1 = random()?;
         let u2 = 1. - random()?;
 
         let z = nv * (u1 - 0.5) / u2;
