@@ -29,6 +29,11 @@ jobs:
           - vers: auto64
             os: windows-latest
 
+    env:
+      CIBW_ARCHS_LINUX: ${{ matrix.vers }}
+      CIBW_ARCHS_MACOS: ${{ matrix.vers }}
+      CIBW_ARCHS_WINDOWS: ${{ matrix.vers }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -43,7 +48,7 @@ jobs:
         uses: docker/setup-qemu-action@v1
         with:
           image: tonistiigi/binfmt:latest
-          platforms: ${{ matrix.vers }}
+          platforms: all
 
       - uses: actions-rs/toolchain@v1
         with:
