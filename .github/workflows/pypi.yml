@@ -74,23 +74,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Install rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-
       - name: Set up Python
         uses: actions/setup-python@v2
-
       - name: Install Dependencies
         run: pip install poetry
-
       - name:  Build sdist
         run: |
           poetry build
-
       - uses: actions/upload-artifact@v2
         with:
           path: dist/*.tar.gz
