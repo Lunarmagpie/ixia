@@ -1,16 +1,11 @@
 [tool.poetry]
 name = "ixia"
-version = "1.0.0"
+version = "1.0.1"
 description = "A library connecting secrets' security with random's usability"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
 readme = "README.md"
 
-[project]
-name = "ixia"
-description = "test"
-version = "1.0.0"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"

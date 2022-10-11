@@ -43,13 +43,13 @@ jobs:
         uses: docker/setup-qemu-action@v1
         with:
           image: tonistiigi/binfmt:latest
-          manylinux: ${{ matrix.vers }}
           platforms: all
 
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
+          manylinux: ${{ matrix.vers }}
           override: true
       - uses: messense/maturin-action@v1
         with:
