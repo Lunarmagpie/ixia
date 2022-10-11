@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "ixia"
-version = "1.0.2"
+version = "1.0.3"
 description = "A library connecting secrets' security with random's usability"
 authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
 readme = "README.md"
 
 [project]
+version = "1.0.3"
 name = "ixia"
 requires-python = "^3.8"
 
