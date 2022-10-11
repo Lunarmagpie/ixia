@@ -1,0 +1,13 @@
+[package]
+name = "ixia"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "ixia_bindings"
+path = "src/bindings/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.17.2", features = ["extension-module"] }
+getrandom = "0.2.7"

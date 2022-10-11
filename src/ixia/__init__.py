@@ -23,6 +23,14 @@ from .lib import (
     weibull_variate,
 )
 
+try:
+    from .ixia_bindings import (  # type: ignore
+        random,
+        normal_variate,
+    )
+except:
+    ...
+
 __all__ = (
     "beta_variate",
     "choice",
