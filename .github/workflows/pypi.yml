@@ -11,6 +11,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      python-version: [3.8, 3.9, "3.10"]
       matrix:
         include:
           - vers: i686
@@ -25,7 +26,6 @@ jobs:
             os: macos-10.15
           - vers: auto64
             os: windows-2019
-        python-version: [3.8, 3.9, "3.10"]
 
     env:
       SCCACHE_VERSION: 0.2.13
