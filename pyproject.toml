@@ -6,6 +6,9 @@ authors = ["trag1c <trag1cdev@yahoo.com>"]
 license = "MIT"
 readme = "README.md"
 
+[project]
+readme = "README.md"
+
 [tool.poetry.dependencies]
 python = "^3.8"
 
