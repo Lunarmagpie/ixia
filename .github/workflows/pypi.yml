@@ -42,28 +42,21 @@ jobs:
           python-version: "3.8"
 
       - name: Set up QEMU
-        if: runner.os == 'Linux'
+        id: qemu
         uses: docker/setup-qemu-action@v1
         with:
+          image: tonistiigi/binfmt:latest
           platforms: all
-
-      - name: wheels Linux ${{ matrix.vers }}
-        if: runner.os == 'Linux'
-        uses: joerick/cibuildwheel@v1.12.0
-        env:
-          CIBW_ARCHS_LINUX: ${{ matrix.vers }}
-
-      - name: wheels Macos ${{ matrix.vers }}
-        if: runner.os == 'Macos'
-        uses: joerick/cibuildwheel@v2.2.2
-        env:
-          CIBW_ARCHS_MACOS: ${{ matrix.vers }}
-
-      - name: wheels Windows ${{ matrix.vers }}
-        if: runner.os == 'Windows'
-        uses: joerick/cibuildwheel@v2.2.2
-        env:
-          CIBW_ARCHS_WINDOWS: ${{ matrix.vers }}
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: messense/maturin-action@v1
+        with:
+          maturin-version: latest
+          command: build
+          args: --release -o wheelhouse
 
       - uses: actions/upload-artifact@v2
         with:
