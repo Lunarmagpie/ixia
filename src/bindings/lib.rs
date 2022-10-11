@@ -17,7 +17,7 @@ fn random_bytes(bytes: &mut [u8]) -> PyResult<()> {
 
 #[pyfunction]
 fn random() -> PyResult<f64> {
-    let mut bytes = [0_u8; 8];
+    let mut bytes = [0u8; 8];
     random_bytes(&mut bytes)?;
     let int = u64::from_be_bytes(bytes);
     Ok((int >> 11) as f64 * (2f64).powf(-53f64))
