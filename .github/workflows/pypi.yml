@@ -11,8 +11,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
-      python-version: [3.8, 3.9, "3.10"]
       matrix:
+        python-version: [3.8, 3.9, "3.10"]
         include:
           - vers: i686
             os: ubuntu-20.04
