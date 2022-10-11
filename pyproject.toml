@@ -7,10 +7,10 @@ license = "MIT"
 readme = "README.md"
 
 [project]
+name = "ixia"
 requires-python = "^3.8"
 
 [tool.poetry.dependencies]
-name = "ixia"
 python = "^3.8"
 
 [tool.poetry.dev-dependencies]
